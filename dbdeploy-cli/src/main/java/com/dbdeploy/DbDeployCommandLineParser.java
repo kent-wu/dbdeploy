@@ -152,7 +152,12 @@ public class DbDeployCommandLineParser {
 			    .withDescription("line ending to use when applying scripts direct to db (platform, cr, crlf, lf)")
 			    .withLongOpt("lineending")
 			    .create());
-
+		
+		options.addOption(OptionBuilder
+				.hasArg()
+				.withDescription("file name pattern tell dbdeploy how to find the match sql file")
+				.withLongOpt("fileNamePattern")
+				.create());
 
 		return options;
 	}

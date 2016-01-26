@@ -31,6 +31,7 @@ public class DbDeploy {
 	private String delimiter = ";";
 	private DelimiterType delimiterType = DelimiterType.normal;
 	private File templatedir;
+	private String fileNamePattern = "(\\d+).*";
 
 	public void setDriver(String driver) {
 		this.driver = driver;
@@ -224,4 +225,12 @@ public class DbDeploy {
 	public LineEnding getLineEnding() {
 		return lineEnding;
 	}
+
+    public String getFileNamePattern() {
+        return fileNamePattern;
+    }
+
+    public void setFileNamePattern(String fileNamePattern) {
+        this.fileNamePattern = fileNamePattern;
+    }
 }
