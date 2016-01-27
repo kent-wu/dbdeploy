@@ -159,6 +159,12 @@ public class DbDeployCommandLineParser {
 				.withLongOpt("fileNamePattern")
 				.create());
 
+		options.addOption(OptionBuilder
+				.hasArg()
+				.withDescription("undo file")
+				.withLongOpt("undoOutputfile")
+				.create());
+		
 		return options;
 	}
 }
