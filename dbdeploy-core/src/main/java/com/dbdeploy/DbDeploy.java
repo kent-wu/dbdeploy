@@ -11,6 +11,7 @@ import com.dbdeploy.database.changelog.QueryExecuter;
 import com.dbdeploy.exceptions.UsageException;
 import com.dbdeploy.scripts.ChangeScriptRepository;
 import com.dbdeploy.scripts.DirectoryScanner;
+import com.dbdeploy.scripts.FilenameParser;
 
 import java.io.File;
 import java.io.PrintWriter;
@@ -93,8 +94,8 @@ public class DbDeploy {
 		DatabaseSchemaVersionManager databaseSchemaVersionManager =
 				new DatabaseSchemaVersionManager(queryExecuter, changeLogTableName);
 
-		ChangeScriptRepository changeScriptRepository =
-				new ChangeScriptRepository(new DirectoryScanner(encoding).getChangeScriptsForDirectory(scriptdirectory));
+        ChangeScriptRepository changeScriptRepository =
+				new ChangeScriptRepository(new DirectoryScanner(encoding, new FilenameParser(fileNamePattern)).getChangeScriptsForDirectory(scriptdirectory));
 
 		ChangeScriptApplier doScriptApplier;
 

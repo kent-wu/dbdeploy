@@ -17,6 +17,12 @@ public class FilenameParserTest {
 	}
 
 	@Test
+	public void canParseAnyFilenameThatStartsWithAWord() throws Exception {
+		FilenameParser parser = new FilenameParser();
+		assertEquals(123L, new FilenameParser("\\w(\\d+).*").extractIdFromFilename("V00123_something.txt"));
+	}
+	
+	@Test
 	public void throwsWhenFilenameDoesNotStartWithANumber() throws Exception {
 		FilenameParser parser = new FilenameParser();
 		try {

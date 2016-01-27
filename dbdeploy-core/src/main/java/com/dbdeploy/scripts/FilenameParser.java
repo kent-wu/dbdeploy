@@ -6,11 +6,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class FilenameParser {
-	private final Pattern pattern;
+    private final Pattern pattern;
 
 	public FilenameParser() {
 		pattern = Pattern.compile("(\\d+).*");
 	}
+
+    public FilenameParser(String pattern) {
+        this.pattern = Pattern.compile(pattern);
+    }
 
 	public long extractIdFromFilename(String filename) throws UnrecognisedFilenameException {
 		Matcher matches = pattern.matcher(filename);

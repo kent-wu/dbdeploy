@@ -9,11 +9,12 @@ import java.util.List;
 
 public class DirectoryScanner {
 	
-	private final FilenameParser filenameParser = new FilenameParser();
+	private final FilenameParser filenameParser;
 	private final String encoding;
 	
-	public DirectoryScanner(String encoding) {
+	public DirectoryScanner(String encoding, FilenameParser filenameParser) {
         this.encoding = encoding;
+        this.filenameParser = filenameParser;
     }
 	
 	public List<ChangeScript> getChangeScriptsForDirectory(File directory)  {
@@ -29,7 +30,7 @@ public class DirectoryScanner {
 			if (file.isFile()) {
 				String filename = file.getName();
 				try {
-					long id = filenameParser.extractIdFromFilename(filename);
+					long id = this.filenameParser.extractIdFromFilename(filename);
 					scripts.add(new ChangeScript(id, file, encoding));
 				} catch (UnrecognisedFilenameException e) {
 					// ignore
